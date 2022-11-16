@@ -1,8 +1,3 @@
-import unittest
-
-import pytest
-import Scraper
-
 class TestScraper():
 
     def test_get_standard_infos(self):

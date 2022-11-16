@@ -6,7 +6,7 @@
 #!/usr/bin/python
 
 import sys
-from Scraper import Scraper
+from modules.ScraperYT import Scraper
 import os
 import json
 
@@ -21,7 +21,6 @@ def main(argv):
                 json_data = json.load(file)
                 for id in json_data['videos_id']:
                     try:
-                        print(f"https://www.youtube.com/watch?v={id}")
                         scraper = Scraper(f"https://www.youtube.com/watch?v={id}")
                     except Exception as e:
                         print(e)
