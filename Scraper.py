@@ -20,7 +20,7 @@ class Scraper:
         if response.ok:
             self.content = BeautifulSoup(response.content, "html.parser")
         else:
-            print(f"ERROR:{response.status_code}")
+            self.content = None
 
 
     def get_all(self)->dict:
