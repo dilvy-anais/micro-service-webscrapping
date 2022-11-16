@@ -23,18 +23,16 @@ def main(argv):
                     try:
                         print(f"https://www.youtube.com/watch?v={id}")
                         scraper = Scraper(f"https://www.youtube.com/watch?v={id}")
-                    except:
-                        print(f"Unable to obtain data from this video{id}")
+                    except Exception as e:
+                        print(e)
                     else:
-                        outdata[id] = scraper.get_all()
-                        print(outdata)
-                        with open(output_file,"a") as outfile:
-                            outfile.write(json.dumps(outdata))
+                        result = scraper.get_all()
+                    with open(output_file,"a") as outfile:
+                        outfile.write(json.dumps(result))
         else:
-            raise Exception("ERROR: Bad Input\nUsage: main.py --input <inputfile> --output <outputfile>")
+            print("ERROR: Bad Input\nUsage: main.py --input <inputfile> --output <outputfile>")
     else:
-        raise Exception("ERROR: Too few arguments\nUsage: main.py --input <inputfile> --output <outputfile>")
-
+        print("ERROR: Too few arguments\nUsage: main.py --input <inputfile> --output <outputfile>")
 
 if __name__ == "__main__":
    main(sys.argv[1:])

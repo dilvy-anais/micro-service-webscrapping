@@ -20,7 +20,7 @@ class Scraper:
         if response.ok:
             self.content = BeautifulSoup(response.content, "html.parser")
         else:
-            self.content = None
+            raise Exception(f"Unable to obtain data from this video {url}")
 
 
     def get_all(self)->dict:
